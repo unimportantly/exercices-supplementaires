@@ -17,7 +17,7 @@ public class Compte {
     public void deposit(double amount){
         setBalance(getBalance()+amount);
     }
-    public void getCash(double amount){
+    public void retirer(double amount){
         setBalance((getBalance()-amount));
     }
     //s&g

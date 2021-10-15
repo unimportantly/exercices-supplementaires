@@ -45,6 +45,14 @@ public class Client {
 
         }return this.accounts;
     }
+    public void verserInterets(){
+        for (int k = 0; k < accounts.length; k++) {
+            if (this.accounts[k] instanceof CompteRemunere){
+               ((CompteRemunere) this.accounts[k]).verserInterets();
+                System.out.println(accounts);
+            }
+        }
+    }
     //g&s
     public String getName() {
         return name;
