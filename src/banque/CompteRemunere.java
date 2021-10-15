@@ -1,6 +1,6 @@
 package banque;
 
-public class CompteRemunere extends Compte {
+public class CompteRemunere extends Compte implements ICompteRemunere{
 
     //attributes
     private double taux = Math.random();

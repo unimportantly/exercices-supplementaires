@@ -49,7 +49,7 @@ public class Client {
         for (int k = 0; k < accounts.length; k++) {
             if (this.accounts[k] instanceof CompteRemunere){
                ((CompteRemunere) this.accounts[k]).verserInterets();
-                System.out.println(accounts);
+                System.out.println("les interets du compte "+ this.accounts[k].getAccountNumber() + " s'elevaient a " + ((CompteRemunere) this.accounts[k]).calculerInterets() );
             }
         }
     }

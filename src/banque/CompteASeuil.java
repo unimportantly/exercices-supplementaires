@@ -1,6 +1,6 @@
 package banque;
 
-public class CompteASeuil extends Compte {
+public class CompteASeuil extends Compte implements ICompteASeuil{
 
     //attributes
     private double seuil;

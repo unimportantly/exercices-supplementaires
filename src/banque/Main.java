@@ -8,7 +8,7 @@ public class Main {
         Client client1 = new Client("Clement", 34, 666);
         CompteRemunere c3 = new CompteRemunere(125, 2500);
         CompteASeuil c4 = new CompteASeuil(1677,600,100);
-        CompteRemunere c5 = new CompteRemunere(133, 4500);
+        CompteASeuilRemunere c5 = new CompteASeuilRemunere(133, 4500,600);
          client1.addAccount(c2);
          client1.addAccount(c1);
         client1.addAccount(c3);
