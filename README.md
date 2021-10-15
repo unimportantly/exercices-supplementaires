@@ -4,6 +4,10 @@ POO sur java
 
 ## exo 1
 
-2 points en 2d
+travail sur l'héritage
+
+## exo 2
+
+travail sur l'héritage, les interfaces, les exceptions
 
 fait par moi ~~

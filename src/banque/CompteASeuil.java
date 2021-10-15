@@ -14,11 +14,17 @@ public class CompteASeuil extends Compte implements ICompteASeuil{
     }
 
     //methods
-    public void retirer(double amount){
+
+    /**
+     * checks if the client is allowed to withdraw
+     * outputs a warning if needed
+     * @param amount to withdraw
+     */
+    public void retirer(double amount) throws BanqueException{
         if ((balance - amount) > seuil) {
             balance -= amount;
         } else {
-            System.out.println("you aren't allowed to withdraw that much.");
+            throw new BanqueException("you aren't allowed to withdraw that much.");
         }
     }
 

@@ -15,6 +15,11 @@ public class CompteRemunere extends Compte implements ICompteRemunere{
     }
 
     //methods
+    /**
+     * computes the interests earned on one account
+     * allows the interests to be added to the current balance
+     * @return
+     */
     public double calculerInterets(){
         double interets = this.getBalance() * this.taux;
         return interets;

@@ -3,19 +3,17 @@ package points2D;
 public class Points2D {
 
     //attributes
-    int x, y;
+    private int x, y;
     static int pointsCounter = 0;
 
     //constructors
     public Points2D(){
-        this.x = 0;
-        this.y = 0;
-        pointsCounter +=2;
+        pointsCounter ++;
     }
     public Points2D(int x, int y) {
+        this();
         this.x = x;
         this.y = y;
-        pointsCounter +=2;
     }
 
     //g&s
@@ -34,7 +32,7 @@ public class Points2D {
 
     //methods
     public void display(){
-        System.out.println("x is " + x + " and y is " + y + ".");
+        System.out.println("x is " + this.x + " and y is " + this.y + ".");
     }
     public void translate(int dX, int dY){
         this.x += dX;

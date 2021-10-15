@@ -15,13 +15,21 @@ public class Compte {
 
     //methods
     public void deposit(double amount){
-        setBalance(getBalance()+amount);
+        setBalance(this.getBalance()+amount);
     }
-    public void retirer(double amount){
-        setBalance((getBalance()-amount));
+
+    /**
+     * withdraw money
+     * @param amount
+     * @throws BanqueException if tries to withdraw too much
+     */
+    public void retirer(double amount) throws BanqueException {
+        if (this.getBalance() < amount){
+            throw new BanqueException("You don't have enough money for that");
+        }
+        setBalance((this.getBalance()-amount));
     }
     //s&g
-
     public int getAccountNumber() {
         return accountNumber;
     }

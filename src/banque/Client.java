@@ -22,14 +22,14 @@ public class Client {
     }
 
     //methods
-    public void addAccount(Compte compte) {
+    public void addAccount(Compte compte) throws BanqueException{
         for (int i = 0; i < accounts.length; i++) {
             if (this.accounts[i] == null) {
                 this.accounts[i] = compte;
                 System.out.println("you have successfully added an account at " + i);
                 break;
             } else if (this.accounts[i] != null && i == accounts.length - 1) {
-                System.out.println("You have reached the maximum number of accounts you are allowed to possess.");
+               throw new BanqueException("You have reached the maximum number of accounts you are allowed to possess.");
             }
         }
     }
