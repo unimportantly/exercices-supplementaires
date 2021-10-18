@@ -1,5 +1,9 @@
 package banque;
 
+/**
+ * creates a compte child class in which we'll set a minimum $$ amount that has to remain on the account
+ *
+ */
 public class CompteASeuil extends Compte implements ICompteASeuil{
 
     //attributes

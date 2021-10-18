@@ -1,5 +1,8 @@
 package banque;
 
+/**
+ * create an interface to organise the compteASeuil methods
+ */
 public interface ICompteASeuil {
 
     //methods

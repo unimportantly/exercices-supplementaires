@@ -1,5 +1,8 @@
 package banque;
 
+/**
+ * solidifies the methods of compteremunere in an interface
+ */
 public interface ICompteRemunere {
 
     //methods

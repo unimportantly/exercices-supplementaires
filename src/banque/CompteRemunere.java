@@ -1,5 +1,9 @@
 package banque;
 
+/**
+ * create a compte child class to get them interests
+ * calculate & retrieve those interests
+ */
 public class CompteRemunere extends Compte implements ICompteRemunere{
 
     //attributes

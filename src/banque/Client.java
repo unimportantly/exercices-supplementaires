@@ -3,6 +3,11 @@ package banque;
 import java.sql.SQLOutput;
 import java.util.*;
 
+/**
+ * create a client class for a bank
+ * add parameters & methods
+ */
+
 public class Client {
 
     //attributes
@@ -56,7 +61,6 @@ public class Client {
 
     /**
      * runs through accounts & decides when to give interests
-     * @param accounts
      */
 
     public void verserInterets() {

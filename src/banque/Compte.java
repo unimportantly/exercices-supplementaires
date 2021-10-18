@@ -1,5 +1,8 @@
 package banque;
 
+/**
+ * create a parent class compte with an ID & balance
+ */
 public class Compte {
 
     //attributes
