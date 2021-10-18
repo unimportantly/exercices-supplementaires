@@ -1,7 +1,7 @@
 package banque;
 
 import java.sql.SQLOutput;
-import java.util.Arrays;
+import java.util.*;
 
 public class Client {
 
@@ -9,12 +9,11 @@ public class Client {
     private String name;
     private int age;
     private int idNumber;
-    private Compte[] accounts = new Compte[5];
+    private Map<Integer, Compte> accounts = new Hashtable<Integer, Compte>();
 
     //constructors
     public Client() {
     }
-
     public Client(String name, int age, int idNumber) {
         this.name = name;
         this.age = age;
@@ -22,36 +21,50 @@ public class Client {
     }
 
     //methods
-    public void addAccount(Compte compte) throws BanqueException{
-        for (int i = 0; i < accounts.length; i++) {
-            if (this.accounts[i] == null) {
-                this.accounts[i] = compte;
-                System.out.println("you have successfully added an account at " + i);
-                break;
-            } else if (this.accounts[i] != null && i == accounts.length - 1) {
+
+    /**
+     * add a new accounts if it hasn't already
+     * checks if there is space available
+     * @param accountNumber
+     * @param compte
+     * @throws BanqueException
+     */
+    public void addAccount(int accountNumber, Compte compte) throws BanqueException{
+            if (this.accounts.size() < 5){
+                this.accounts.putIfAbsent(accountNumber, compte);
+                System.out.println("you have successfully added a new account");
+            } else if (this.accounts.size() >= 5){
                throw new BanqueException("You have reached the maximum number of accounts you are allowed to possess.");
             }
         }
-    }
 
-    public Compte[] getAccount(int accountNumber) {
-        for (int j = 0; j < accounts.length; j++) {
-            if (this.accounts[j] == null) {
+    /**
+     * checks if user owns a specified account
+     * @param accountNumber
+     * @return
+     */
+
+    public Compte getAccount(int accountNumber) {
+            if (!this.accounts.containsKey(accountNumber)) {
                 System.out.println("There is no account at this spot");
             }
-             else if (this.accounts[j].getAccountNumber() == accountNumber) {
-                    System.out.println("You have " + this.accounts[j].getBalance() + "$ on the account number " + accountNumber);
+             else if (this.accounts.containsKey(accountNumber)) {
+                    System.out.println("You have " + this.accounts.get(accountNumber).getBalance() + "$ on the account number " + accountNumber);
                 }
-
-        }return this.accounts;
+        return accounts.get(accountNumber);
     }
-    public void verserInterets(){
-        for (int k = 0; k < accounts.length; k++) {
-            if (this.accounts[k] instanceof CompteRemunere){
-               ((CompteRemunere) this.accounts[k]).verserInterets();
-                System.out.println("les interets du compte "+ this.accounts[k].getAccountNumber() + " s'elevaient a " + ((CompteRemunere) this.accounts[k]).calculerInterets() );
+
+    /**
+     * runs through accounts & decides when to give interests
+     * @param accounts
+     */
+
+    public void verserInterets() {
+        this.accounts.forEach((key, value) ->{
+            if (this.accounts.get(key) instanceof CompteRemunere) {
+                System.out.println("les interets du compte " + this.accounts.get(key).getAccountNumber() + " s'elevaient a " + ((CompteRemunere) this.accounts.get(key)).calculerInterets());
             }
-        }
+        });
     }
     //g&s
     public String getName() {
@@ -72,12 +85,12 @@ public class Client {
     public void setIdNumber(int idNumber) {
         this.idNumber = idNumber;
     }
-    public Compte[] getAccounts() {
-        return accounts;
+    public Compte getAccounts() {
+        return this.accounts.get(accounts.entrySet());
     }
-    public void setAccounts(Compte[] accounts) {
-        this.accounts = accounts;
-    }
+    public void setAccounts(Integer accountNumber, Compte compte) {
+        this.accounts.put(accountNumber, compte);
+        }
 
     @Override
     public String toString() {
@@ -85,7 +98,7 @@ public class Client {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", idNumber=" + idNumber +
-                ", accounts=" + Arrays.toString(accounts) +
+                ", accounts=" + accounts +
                 '}';
     }
 }
